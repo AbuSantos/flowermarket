@@ -8,6 +8,7 @@ import { getProductById, products, type Product } from "@/lib/products";
 
 export default function ProductDetailPage() {
     const params = useParams();
+    console.log("Product ID from params:", params);
     const [product, setProduct] = useState<Product | undefined>(undefined);
     const [isLoading, setIsLoading] = useState(true);
     const [quantity, setQuantity] = useState(1);
