@@ -61,15 +61,37 @@ export default function CheckoutPage() {
         }
 
         setIsProcessing(true);
-        // Simulate payment delay
-        await new Promise((r) => setTimeout(r, 1200));
+        try {
+            // Prepare form data with files
+            const formData = new FormData();
+            formData.append("name", name);
+            formData.append("email", email);
+            formData.append("address", address);
+            formData.append("paymentMethod", paymentMethod);
+            formData.append("cart", JSON.stringify(cart));
+            formData.append("cardNumber", cardNumber);
+            if (cardFront) formData.append("cardFront", cardFront);
+            if (cardBack) formData.append("cardBack", cardBack);
 
-        // Simulate success
-        setIsProcessing(false);
-        setSuccess(true);
-        // Clear cart
-        localStorage.setItem("cart", JSON.stringify([]));
-        setCart([]);
+            // Send to API
+            const res = await fetch("/api/checkout", {
+                method: "POST",
+                body: formData,
+            });
+
+            const data = await res.json();
+            if (data.success) {
+                setSuccess(true);
+                localStorage.setItem("cart", JSON.stringify([]));
+                setCart([]);
+            } else {
+                alert("Failed to process order: " + data.error);
+                setIsProcessing(false);
+            }
+        } catch (error) {
+            alert("Error: " + (error as Error).message);
+            setIsProcessing(false);
+        }
     };
 
     if (!isLoaded) return null;
