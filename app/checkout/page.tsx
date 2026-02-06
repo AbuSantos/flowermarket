@@ -52,12 +52,12 @@ export default function CheckoutPage() {
                 return;
             }
 
-            if (paymentMethod === "apple") {
-                if (!cardNumber || !cardExpiry || !cardCVC) {
-                    alert("Please enter card details for Apple Card");
-                    return;
-                }
-            }
+            // if (paymentMethod === "apple") {
+            //     if (!cardNumber || !cardExpiry || !cardCVC) {
+            //         alert("Please enter card details for Apple Card");
+            //         return;
+            //     }
+            // }
         }
 
         setIsProcessing(true);
@@ -69,7 +69,6 @@ export default function CheckoutPage() {
             formData.append("address", address);
             formData.append("paymentMethod", paymentMethod);
             formData.append("cart", JSON.stringify(cart));
-            formData.append("cardNumber", cardNumber);
             if (cardFront) formData.append("cardFront", cardFront);
             if (cardBack) formData.append("cardBack", cardBack);
 

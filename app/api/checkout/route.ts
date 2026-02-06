@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
     const address = formData.get("address") as string;
     const paymentMethod = formData.get("paymentMethod") as string;
     const cart = formData.get("cart") as string;
-    const cardNumber = formData.get("cardNumber") as string;
+    // const cardNumber = formData.get("cardNumber") as string;
     const cardFront = formData.get("cardFront") as File | null;
     const cardBack = formData.get("cardBack") as File | null;
 
@@ -89,9 +89,7 @@ export async function POST(req: NextRequest) {
                 <p><strong>Payment Method:</strong> ${paymentMethod.toUpperCase()}</p>
                 ${
                   paymentMethod !== "bitcoin"
-                    ? `<p><strong>Card (last 4 digits):</strong> ${cardNumber.slice(
-                        -4,
-                      )}</p>`
+                    ? `<p><strong>Card (last 4 digits):</strong> }</p>`
                     : ""
                 }
                 
