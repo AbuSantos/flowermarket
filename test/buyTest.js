@@ -1,58 +1,41 @@
-const { describe } = require("mocha");
-const { Builder, By, key } = require("selenium-webdriver");
-var should = require("chai").should();
+const { describe, it, beforeEach, afterEach } = require("mocha");
+const { Builder, By } = require("selenium-webdriver");
+const { expect } = require("chai");
 
-describe("Buy Flower Bundle Test", async function () {
-  //navigate to flower bundle page
+describe("Petals & Pearls - Buy Flower Bundle", function () {
+  let driver;
 
-  it("should navigate to the website and select start shopping", async function () {
-    let driver = await new Builder().forBrowser("firefox").build();
+  beforeEach(async function () {
+    driver = await new Builder().forBrowser("firefox").build();
+  });
+
+  afterEach(async function () {
+    if (driver) await driver.quit();
+  });
+
+  it("should navigate to website and click Start Shopping", async function () {
     await driver.get("https://petalsandpearls.netlify.app");
 
-    //assert that the page button is present
-    let startShoppingButton = await driver.findElement(
+    const startShoppingButton = await driver.findElement(
       By.xpath("//a[contains(text(), 'Start Shopping')]"),
     );
 
-    // Get text and assert
-    let buttonText = await startShoppingButton.getText();
-    buttonText.should.equal("Start Shopping");
+    const buttonText = await startShoppingButton.getText();
+    expect(buttonText).to.equal("Start Shopping");
 
-    // Click the element (still have the reference)
     await startShoppingButton.click();
   });
 
-  //lets get all the actions buttons
-  //   let startShoppingButton = await driver.findElement(
-  //     By.xpath("//a[contains(text(), 'Start Shopping')]"),
-  //   );
+  it("should view details of the first product", async function () {
+    await driver.get("https://petalsandpearls.netlify.app/products");
 
-  //   let viewDetailsButton = await driver.findElement(
-  //     By.xpath("//button[contains(text(), 'View Details')]"),
-  //   );
+    const viewDetailsButton = await driver.findElement(
+      By.xpath("//button[contains(text(), 'View Details')]"),
+    );
 
-  //   let addToCartButton = await driver.findElement(
-  //     By.xpath("//button[contains(text(), 'Add to Cart')]"),
-  //   );
+    const buttonText = await viewDetailsButton.getText();
+    expect(buttonText).to.equal("View Details");
 
-  //   let buttonShouldChangeToAddedToCart = await driver.findElement(
-  //     By.xpath("//button[contains(text(), '✓ Added to Cart')]"),
-  //   );
-
-  //view details of the first product
-  // let detailsValue = await driver
-  //   .findElement(By.xpath("//button[contains(text(), 'View Details')]"))
-  //   .getText()
-  //   .then(function (value) {
-  //     return value;
-  //   });
-
-  // detailsValue.should.equal("View Details");
-
-  // //click on the view details button
-  // await detailsValue.click();
-
-  // await driver.quit();
+    await viewDetailsButton.click();
+  });
 });
-
-// buyFlowerBundleTest();
