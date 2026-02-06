@@ -43,7 +43,7 @@ export const products: Product[] = [
   {
     id: "2",
     name: "Sunlight Bloom Box",
-    price: 64.99,
+    price: 184.99,
     description:
       "Vibrant sunflowers with milk chocolate pralines and a delicate silver chain",
     flower: {
@@ -64,9 +64,9 @@ export const products: Product[] = [
   {
     id: "3",
     name: "Garden Dream Set",
-    price: 89.99,
+    price: 289.99,
     description:
-      "Mixed tulips with white chocolate raspberry and a pearl-adorned rose gold necklace",
+      "Mixed tulips with white chocolate raspberry and a pearl-adorned rose gold necklace, inclusive of delivery",
     flower: {
       name: "Assorted Tulips",
       color: "Pastel Mix",
@@ -85,7 +85,7 @@ export const products: Product[] = [
   {
     id: "4",
     name: "Lavender Luxury",
-    price: 74.99,
+    price: 274.99,
     description:
       "Soothing lavender with artisan chocolate bars and an amethyst stone necklace",
     flower: {
@@ -106,7 +106,7 @@ export const products: Product[] = [
   {
     id: "5",
     name: "Cherry Blossom Collection",
-    price: 69.99,
+    price: 369.99,
     description:
       "Delicate cherry blossoms with cherry-filled chocolate bonbons and a dainty gold necklace",
     flower: {
