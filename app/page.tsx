@@ -9,7 +9,7 @@ export default function Home() {
         <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             <div className="text-2xl font-bold text-pink-600 dark:text-pink-400">
-              🌸 Flowermarket
+              🌸 PetalsandPearls
             </div>
             <div className="flex gap-4">
               <Link
