@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { FiShoppingCart } from "react-icons/fi";
 import { products } from "@/lib/products";
 
 export default function ProductsPage() {
@@ -26,9 +27,10 @@ export default function ProductsPage() {
                     </Link>
                     <Link
                         href="/cart"
-                        className="rounded-lg bg-pink-600 px-4 py-2 text-sm font-medium text-white hover:bg-pink-700 dark:bg-pink-700 dark:hover:bg-pink-600"
+                        className="rounded-lg bg-pink-600 px-4 py-2 text-sm font-medium text-white hover:bg-pink-700 dark:bg-pink-700 dark:hover:bg-pink-600 flex items-center"
                     >
-                        View Cart
+                        <FiShoppingCart className="mr-2 h-4 w-4" aria-hidden="true" />
+                        <span>View Cart</span>
                     </Link>
                 </div>
 

@@ -5,10 +5,10 @@ import { useParams } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { getProductById, products, type Product } from "@/lib/products";
+import { FiShoppingCart } from "react-icons/fi";
 
 export default function ProductDetailPage() {
     const params = useParams();
-    console.log("Product ID from params:", params);
     const [product, setProduct] = useState<Product | undefined>(undefined);
     const [isLoading, setIsLoading] = useState(true);
     const [quantity, setQuantity] = useState(1);
@@ -167,16 +167,30 @@ export default function ProductDetailPage() {
                                     </button>
                                 </div>
                             </div>
+                            <div className="flex space-x-2 justify-between">
+                                <button
+                                    onClick={handleAddToCart}
+                                    className={`w-[65%] rounded-lg px-6 py-3 text-lg font-semibold text-white transition-all ${addedToCart
+                                        ? "bg-green-600 hover:bg-green-700"
+                                        : "bg-pink-600 hover:bg-pink-700 dark:bg-pink-700 dark:hover:bg-pink-600"
+                                        }`}
+                                >
+                                    {addedToCart ? "✓ Added to Cart" : "Add to Cart"}
+                                </button>
+                                {/* { */}
 
-                            <button
-                                onClick={handleAddToCart}
-                                className={`w-full rounded-lg px-6 py-3 text-lg font-semibold text-white transition-all ${addedToCart
-                                    ? "bg-green-600 hover:bg-green-700"
-                                    : "bg-pink-600 hover:bg-pink-700 dark:bg-pink-700 dark:hover:bg-pink-600"
-                                    }`}
-                            >
-                                {addedToCart ? "✓ Added to Cart" : "Add to Cart"}
-                            </button>
+                                <Link
+                                    href="/cart"
+                                    className="rounded-lg bg-pink-600 px-4 py-2 text-sm font-semibold text-white hover:bg-pink-700 dark:bg-pink-700 dark:hover:bg-pink-600 flex items-center"
+                                >
+                                    <FiShoppingCart className="mr-2 h-6 w-6" aria-hidden="true" />
+                                    <span>View Cart</span>
+                                </Link>
+                                {/* } */}
+
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
