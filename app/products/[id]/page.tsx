@@ -183,7 +183,7 @@ export default function ProductDetailPage() {
                                     href="/cart"
                                     className="rounded-lg bg-pink-600 px-4 py-2 text-sm font-semibold text-white hover:bg-pink-700 dark:bg-pink-700 dark:hover:bg-pink-600 flex items-center"
                                 >
-                                    <FiShoppingCart className="mr-2 h-6 w-6" aria-hidden="true" />
+                                    <FiShoppingCart className="mr-2 h-4 w-4" aria-hidden="true" />
                                     <span>View Cart</span>
                                 </Link>
                                 {/* } */}
